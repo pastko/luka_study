@@ -7,6 +7,7 @@
     "csv-writer": "^1.6.0",
     "elasticsearch": "^16.7.2",
     "moment": "^2.26.0",
+    "monent": "0.0.2-security",
     "xlsx": "^0.16.2"
   },
   "devDependencies": {},
