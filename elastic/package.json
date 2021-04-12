@@ -1,0 +1,19 @@
+{
+  "name": "elastic",
+  "version": "1.0.0",
+  "main": "elastic_to_excel.js",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.12.0",
+    "csv-writer": "^1.6.0",
+    "elasticsearch": "^16.7.2",
+    "moment": "^2.26.0",
+    "xlsx": "^0.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
