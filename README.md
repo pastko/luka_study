@@ -2,5 +2,4 @@
 
 
 
-
-test mode 
+Study code collect Repo
