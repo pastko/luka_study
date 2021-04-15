@@ -1,5 +1,5 @@
 import java.sql.Array;
-import java.util.HashMap;
+
 
 /**
  * 
@@ -36,25 +36,23 @@ phone_book	return
 public class App {
     public static void main(String[] args) throws Exception {
         String[] phon = {"119", "97674223", "1195524421"};
-        Solution sl = new Solution();
+        String[] phon2 = {"123","456","789"};
+        String[] phon3 = {"12","123","1235","567","88"};
         
+        heshsloution s2 = new heshsloution();
+        
+        var re = s2.solution1(phon);
+        System.out.println(re);
+        /*
         var result = sl.solution(phon);
         System.out.println(result);
+
+        result = sl.solution(phon2);
+        System.out.println(result);
+
+        result = sl.solution(phon3);
+        System.out.println(result);
+        */
     }
 }
 
-
-class Solution {
-    public boolean solution(String[] phone_book) {
-        HashMap<Integer,String> phon_bookmap = new HashMap<Integer, String>();
-        for (String indata : phone_book) {
-            phon_bookmap.put(indata.length(), indata);
-        }
-        phon_bookmap.forEach( (key, value) -> {
-            System.out.println(key+":"+value);
-        });
-
-        boolean answer = true;
-        return answer;
-    }
-}
