@@ -44,7 +44,7 @@ face에 해당하는 의상이 crow_mask, blue_sunglasses, smoky_makeup이므로
 
  */
 
-let value = [["yellowhat", "headgear"], ["bluesunglasses", "eyewear"], ["green_turban", "tim"]];
+let value = [["yellowhat", "headgear"], ["bluesunglasses", "eyewear"], ["green_turban", "headgear"]];
 let value2 = [["crowmask", "face"], ["bluesunglasses", "face"], ["smoky_makeup", "face"]];
 
 function solution(clothes) {
@@ -53,6 +53,8 @@ function solution(clothes) {
     clothes.forEach((res) => {
         msp.set(res[1], (msp.get(res[1])|0) + 1);
     });
+
+    console.log(msp);
 
     if( msp.size > 1 && count != msp.size)
     {
@@ -67,3 +69,5 @@ function solution(clothes) {
 }
 
 console.log(solution(value));
+
+
