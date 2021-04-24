@@ -31,10 +31,25 @@ let com = [[2, 5, 3], [4, 4, 1], [1, 7, 3]]
 
 function solution(array, commands) {
     var answer = [];
-    answer = array.slice(commands[0][0],commands[0][1]).sort((a,b)=>{return a - b})
+    commands.forEach(ele => {
+        answer.push(array.slice(ele[0] - 1,ele[1]).sort((a,b)=>{return a - b})[ele[2] - 1]);
+    });    
     
     return answer;
 }
 
+
+/**
+ * 
+ *  다른사람 풀이
+ */
+function solution(array, commands) {
+    var answer = [];
+
+    answer = commands.map(a=>{
+        return array.slice(a[0]-1,a[1]).sort((b,c)=>b-c)[a[2]-1];
+    })
+    return answer;
+}
 
 console.log(solution(an,com));
