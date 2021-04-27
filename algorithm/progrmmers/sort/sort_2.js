@@ -29,14 +29,49 @@ let num2 = [3, 30, 34, 5, 9];
 function solution(numbers) {
     var answer = '';
 
+    let segment = permutation(numbers, numbers.length);
     
     
-    console.log(numbers[0].toString()+numbers[1].toString());
 
-    return answer;
+    return segment;
 }
 
 
 
+console.log(solution(num).length);
+console.log(solution(num));
 
-console.log(solution(num2));
+
+
+function permutation(arr, selectNum) {
+  let result = [];
+  if (selectNum === 1) return arr.map((v) => [v]);
+
+  arr.forEach((v, idx, arr) => {
+    const fixer = v;
+    const restArr = arr.filter((_, index) => index !== idx);
+    const permuationArr = permutation(restArr, selectNum - 1);
+    const combineFixer = permuationArr.map((v) => [fixer, ...v]);
+    result.push(...combineFixer);
+  });
+  return result;
+}
+
+
+const dfs = (graph, startNode) => {
+    let needVisitStack = []; // 탐색을 해야 할 노드들
+    let visitedQueue = []; // 탐색을 마친 노드들
+  
+    needVisitStack.push(startNode);
+  
+    // 탐색을 해야 할 노드가 남아 있다면
+    while (needVisitStack.length !== 0) {
+      const node = needVisitStack.pop();
+      if (!visitedQueue.includes(node)) {
+        visitedQueue.push(node);
+        needVisitStack = [...needVisitStack, ...graph[node]];
+      }
+    }
+  
+    return visitedQueue;
+  };
