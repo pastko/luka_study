@@ -25,27 +25,63 @@ numbers	return
 
 let num = [6, 10, 2];
 let num2 = [3, 30, 34, 5, 9];
+let num3 = [0, 0, 0, 0];
+let num4 = [21, 212];
+let num5 = [15,151];
+let num6 = [1020, 2010, 6002, 2006, 6010, 1006];
+
 
 function solution(numbers) {
     var answer = '';
+    let sumstring = [];
+    let segment = permutation(numbers, numbers.length);    
 
-    let segment = permutation(numbers, numbers.length);
-    
-    
-
-    return segment;
+    segment.map((v)=>{
+        sumstring.push(v.join(''));
+    });
+    return sumstring.sort((a,b)=>{ return b - a})[0];
 }
 
 
+function solution1(numbers)
+{    
+  return  parseInt(numbers.sort((a,b)=>{
+    if( (b.toString())[0] === (a.toString())[0] ) return b%10 - a%10;
+    return (b.toString())[0] - (a.toString())[0];
+  }).join('')).toString();
+}
 
-console.log(solution(num).length);
-console.log(solution(num));
+function solution2(numbers)
+{    
+  let res = numbers.sort((a,b)=>  (a.toString() + b.toString()) > (b.toString() + a.toString()) ? -1 : 1   ).join('');
+  if( parseInt(res) === 0 )
+    return "0";
+  return res;
+}
+
+function solution3(numbers)
+{    
+  return numbers.sort((a,b)=>  (a.toString() + b.toString()) > (b.toString() + a.toString()) ? -1 : 1   ).join('');
+}
+/***
+ * 
+ *  main proc
+ * 
+ * 
+ */
+
+
+console.log(solution2(num3));
+console.log(solution3(num3));
+
+
 
 
 
 function permutation(arr, selectNum) {
   let result = [];
   if (selectNum === 1) return arr.map((v) => [v]);
+
 
   arr.forEach((v, idx, arr) => {
     const fixer = v;
@@ -56,6 +92,21 @@ function permutation(arr, selectNum) {
   });
   return result;
 }
+
+
+
+function pe(start, array, end)
+{
+  let result =[];
+  if(size === end) return array;
+
+  array.forEach((value, index, arr)=>{
+      result = swap(arr[start], arr[end]);
+      pe( start + 1, result, end );
+
+  })
+}
+
 
 
 const dfs = (graph, startNode) => {
