@@ -22,18 +22,14 @@ citations	return
  */
 
 
-function solution(citations) {
-    var answer = 0;
-    let center = al(1,citations);
-    console.log(center);
-    
-    return answer;
+function solution(citations) {   
+    return al(1,citations);
 }
 
 
 function al(center , arrays)
 {
-    if(center === arrays.length) return -1;
+    if(center === arrays.length) return center;
     
     let updata = [];
     let downdata = [];
@@ -43,8 +39,12 @@ function al(center , arrays)
         else
             downdata.push(value);
     })
+
+
     if( updata.length === center && downdata.length < center)
         return center;
+    else if ( updata.length === 0 )
+        return center-1;
     else       
         return al(center+1, arrays);
 }
@@ -57,5 +57,11 @@ function al(center , arrays)
  */
 
 let num = [3, 0, 6, 1, 5];
+let num1 = [0,1,1];
+let num2 = [1,4];
+let num3 =  [22,42];
 
-console.log(solution(num));
+let num4 = [0,0,0];
+let num5 = [0,2,2,0];
+
+console.log(solution(num2));
