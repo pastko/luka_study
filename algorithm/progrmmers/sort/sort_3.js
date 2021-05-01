@@ -29,7 +29,7 @@ function solution(citations) {
 
 function al(center , arrays)
 {
-    if(center === arrays.length) return center;
+    if(center === arrays.length) return center-1;
     
     let updata = [];
     let downdata = [];
@@ -39,7 +39,9 @@ function al(center , arrays)
         else
             downdata.push(value);
     })
-
+    console.log(center);
+    console.log(updata);
+    console.log(downdata);
 
     if( updata.length === center && downdata.length < center)
         return center;
@@ -57,7 +59,7 @@ function al(center , arrays)
  */
 
 let num = [3, 0, 6, 1, 5];
-let num1 = [0,1,1];
+let num1 = [0,1,1,1];
 let num2 = [1,4];
 let num3 =  [22,42];
 
