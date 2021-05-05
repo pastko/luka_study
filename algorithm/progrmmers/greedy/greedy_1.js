@@ -15,8 +15,8 @@
 입출력 예
 n	lost	reserve	return
 5	[2, 4]	[1, 3, 5]	5
-5	[2, 4]	[3]	4
-3	[3]	[1]	2
+5	[2, 4]	[3]	        4
+3	[3]	    [1]	        2
 입출력 예 설명
 예제 #1
 1번 학생이 2번 학생에게 체육복을 빌려주고, 3번 학생이나 5번 학생이 4번 학생에게 체육복을 빌려주면 학생 5명이 체육수업을 들을 수 있습니다.
@@ -30,16 +30,30 @@ n	lost	reserve	return
 
 
 function solution(n, lost, reserve) {
-    if( lost.length === n)      return 0;
+    if( lost.length === n && reserve.length === 0)      return 0;
     if( reserve.length === n)   return n;
-    
     let answer = 0;
-    
+    let student = new Array(n+1).fill(1);
+    lost.sort((a,b)=>a-b);
+    reserve.sort((a,b)=>a-b);
 
 
+    lost.forEach(element =>{
+        if( !reserve.some(res=>element===res) ){
+            student[element]--;   
+        }else{
+            reserve.splice(reserve.indexOf(element),1);
+        }
+    })
 
+    reserve.forEach(element => {
+        if(student[element] === 0) student[element]++;
+        else if(student[element-1] === 0) student[element-1]++;
+        else if(student[element+1] === 0) student[element+1]++;
+    });
 
-    return answer;
+    console.log(student);
+    return student.reduce((a,b)=>a+b)-1;
 }
 
 
@@ -52,9 +66,13 @@ function solution(n, lost, reserve) {
  * 
  */
  let num1 = { "n" : 5 , "lost":[2, 4], "reserve" : [1, 3, 5]};
+ let num2 = { "n" : 5 , "lost":[2, 4], "reserve" : [3]};
+ let num3 = { "n" : 3 , "lost":[3], "reserve" : [1]	};
+ let num4 = { "n" : 10 , "lost":[2,3,6,8], "reserve" : [1,3,4,5]	};
+ let num5 = { "n" : 5 , "lost":[2,3,4], "reserve" : [1,2,3]	};
+ let num6 = { "n" : 4 , "lost":[4,2], "reserve" : [1,3]	}; //4, [4, 2], [1, 3] -> 4
 
-
-console.log(solution(num1.n,num1.lost,num1.reserve));
+console.log(solution(num5.n,num5.lost,num5.reserve));
 
 
 
@@ -63,7 +81,15 @@ console.log(solution(num1.n,num1.lost,num1.reserve));
  * 
  * another problem solving
  * 
- *  
- *  
+ *  filter 이용하여  해당 학생과 자리 차이가 1 이하인 학생 중 예비 옷이 없고 옷도 잃어 버린 학생수를 찾아서 전체 수 에서 뺌
+ *  지림...  
  * 
  */
+
+ function solution(n, lost, reserve) {      
+     return n - lost.filter(a => {
+         const b = reserve.find(r => Math.abs(r-a) <= 1)
+         if(!b) return true
+         reserve = reserve.filter(r => r !== b)
+     }).length
+ }
