@@ -53,31 +53,91 @@ function solution(name) {
 
     
     for (let  i = 0, j = 0 , size =  splitName.length  ;; j++ , i = size - j){
-        let element = splitName[i];
-        console.log(i + ":" +element +":"+rever);
+        let element = splitName[i];        
 
         if ( element === "A")                               { rever += 0;}
         else if (element === 'N')                           { rever += 13; }
         else if (element.charCodeAt(0) < 'N'.charCodeAt(0)) { rever += Math.abs('A'.charCodeAt(0) - element.charCodeAt(0)); }
         else if (element.charCodeAt(0) > 'N'.charCodeAt(0)) { rever += Math.abs('Z'.charCodeAt(0) - element.charCodeAt(0) + 1); }       
         
+        console.log(i + ":" +element +":"+rever);
         if(i === 1 ) {
             if(element === "A")
                 rever--;
-            break;
-        }
 
+            break;
+        }        
         rever++;        
     };
     
-
+    console.log(answer +":"+ rever);
     return answer > rever ? rever : answer;
+}
+
+function solution1(name) {
+    let answer = 0;
+    let anflag = [];
+    name.split("").map((e)=>{
+        if(e === "A") anflag.push(0);
+        else if (e === "N")                           { anflag.push(13); }
+        else if (e.charCodeAt(0) < "N".charCodeAt(0)) { anflag.push(Math.abs('A'.charCodeAt(0) - e.charCodeAt(0))); }
+        else if (e.charCodeAt(0) > "N".charCodeAt(0)) { anflag.push(Math.abs('Z'.charCodeAt(0) - e.charCodeAt(0) + 1)); }
+        console.log(anflag);
+    });
+
+    console.log( calculation_right(anflag,1,anflag.length-1));
+    console.log( calculation_left(anflag,1,anflag.length-1));
+
+    /*
+    splitName.forEach(element => {
+        
+        if ( element === "A")                               { answer += 0;}
+        else if (element === 'N')                           { answer += 13; }
+        else if (element < 'N') { answer += Math.abs('A'.charCodeAt(0) - element.charCodeAt(0)); }
+        else if (element > 'N') { answer += Math.abs('Z'.charCodeAt(0) - element.charCodeAt(0) + 1); }
+        
+        console.log(element+":"+answer);
+        answer++;
+    });answer--;
+
+    */
+    console.log();
+    return anflag.join("");
 }
 
 
 
+function calculation_left(arrays,start,end)
+{
+    let a = 0;
+    for (let  i = start + 1 , a = 1 ;; ++i , ++a){
+        if( i > end ) 
+            i = 0;
+        
+        if(arrays[i] !== 0)
+        {
+            return a;
+        }
+        if(i == start )
+            return a;
+    }
+}
 
 
+function calculation_right(arrays,start,end)
+{    console.log(arrays, start,end);
+    for (let  i = start - 1 , a = 1 ;; --i , ++a){
+        if( i < 0 ) 
+            i = end;
+        
+        if(arrays[i] !== 0)
+        {
+            return a;
+        }
+        if(i == start )
+            return a;
+    }
+}
 
 
 /**
@@ -88,8 +148,10 @@ function solution(name) {
  */
  let num1 ="JEROEN";
  let num2 ="JAN";
+ let num3 = "ABABAAAAABA";
 
-console.log(solution(num2));
+//console.log(solution(num3));
+console.log(solution1(num3));
 
 
 
