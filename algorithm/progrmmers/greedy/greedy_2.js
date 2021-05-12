@@ -82,32 +82,45 @@ function solution1(name) {
         else if (e === "N")                           { anflag.push(13); }
         else if (e.charCodeAt(0) < "N".charCodeAt(0)) { anflag.push(Math.abs('A'.charCodeAt(0) - e.charCodeAt(0))); }
         else if (e.charCodeAt(0) > "N".charCodeAt(0)) { anflag.push(Math.abs('Z'.charCodeAt(0) - e.charCodeAt(0) + 1)); }
-        console.log(anflag);
+        
     });
 
-    console.log( calculation_right(anflag,1,anflag.length-1));
-    console.log( calculation_left(anflag,1,anflag.length-1));
+   let index = 0;
+   let siz = anflag.length - 1
+    while(true){
+        answer += anflag[index];
+        anflag[index] = 0;
 
-    /*
-    splitName.forEach(element => {
-        
-        if ( element === "A")                               { answer += 0;}
-        else if (element === 'N')                           { answer += 13; }
-        else if (element < 'N') { answer += Math.abs('A'.charCodeAt(0) - element.charCodeAt(0)); }
-        else if (element > 'N') { answer += Math.abs('Z'.charCodeAt(0) - element.charCodeAt(0) + 1); }
-        
-        console.log(element+":"+answer);
-        answer++;
-    });answer--;
+        if(!anflag.some(e=>e>0))
+            break;
 
-    */
-    console.log();
-    return anflag.join("");
+        let right = calculation_right(anflag,index,siz)
+        let left  = calculation_left(anflag,index,siz)  
+
+        if( right > left )
+        {
+            if( index - left < 0)
+                index = index+siz+1 - left;
+            else
+                index -= left;
+
+            answer += left;
+        }
+        else
+        {
+            index = (index + right )%(siz+1);
+            answer += right;
+        }
+        if(index<0)
+            index = siz        
+    }
+    
+    return answer;
 }
 
 
 
-function calculation_left(arrays,start,end)
+function calculation_right(arrays,start,end)
 {
     let a = 0;
     for (let  i = start + 1 , a = 1 ;; ++i , ++a){
@@ -124,8 +137,8 @@ function calculation_left(arrays,start,end)
 }
 
 
-function calculation_right(arrays,start,end)
-{    console.log(arrays, start,end);
+function calculation_left(arrays,start,end)
+{    
     for (let  i = start - 1 , a = 1 ;; --i , ++a){
         if( i < 0 ) 
             i = end;
@@ -151,7 +164,7 @@ function calculation_right(arrays,start,end)
  let num3 = "ABABAAAAABA";
 
 //console.log(solution(num3));
-console.log(solution1(num3));
+console.log(solution2(num3));
 
 
 
@@ -165,3 +178,29 @@ console.log(solution1(num3));
  * 
  * 
  */
+ function solution2(name) {
+    let sum = 0;
+    for (let i = 0; i < name.length; i++) {
+        let diff = name[i].charCodeAt() - 'A'.charCodeAt();
+        sum += diff > 13 ? 26 - diff : diff;
+    }
+
+    let minMove = name.length - 1;
+    for (let i = 1; i < name.length; i++) {
+        if (name[i] === 'A') {
+            for (var j = i + 1; j < name.length; j++) {
+                if (name[j] !== 'A') {
+                    break;
+                }
+            }
+
+            const left = i - 1;
+            const right = name.length - j;
+            minMove = Math.min(minMove, left > right ? left + right * 2 : left * 2 + right);
+
+            i = j;
+        }
+    }
+
+    return sum + minMove;
+}
