@@ -42,7 +42,6 @@ function solution(number, k) {
             console.log(number)
             i = 0;
         }
-
         
 
 
@@ -59,6 +58,17 @@ function solution(number, k) {
     return number.filter(e=>e!='0').join("");
 }
 
+function solution1(number, k){
+    let numbers = number.split("");
+    
+    let member = Array.from(new Set(numbers)).sort((a,b)=>a-b);
+
+    //number = numbers.map(e=>number[e] = (number[e]|0) + 1);
+
+    console.log(member);
+    //console.log(number);
+    return [];
+}
 
 /**
  * 
@@ -69,9 +79,9 @@ function solution(number, k) {
  let num1 = { "number" : "1924" , "k" : 2};
  let num2 = { "number" : "1231234" , "k" : 3};
  let num3 = { "number" : "4177252841" , "k" : 4};
+ let num4 = { "number" : "3922139", "k" : 3}
 
-
-console.log(solution(num3.number,num3.k));
+console.log(solution1(num3.number,num3.k));
 
 
 
