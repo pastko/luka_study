@@ -1,4 +1,5 @@
 import java.sql.Array;
+import java.util.*;
 
 
 /**
@@ -39,10 +40,17 @@ public class App {
         String[] phon2 = {"123","456","789"};
         String[] phon3 = {"12","123","1235","567","88"};
         
-        heshsloution s2 = new heshsloution();
+        String s1 = String.valueOf(34);
+
+        //heshsloution s2 = new heshsloution();
         
-        var re = s2.solution1(phon);
-        System.out.println(re);
+        Queue<Integer> set = new LinkedList<>();
+        Set<Integer> set1 = new HashSet<>();
+        List<Integer> set2 = new ArrayList<Integer>();
+        Map<Integer,String> set3 = new HashMap<>();
+
+        //System.out.println(s1 instanceof Integer);
+        System.out.println(s1);
         /*
         var result = sl.solution(phon);
         System.out.println(result);
@@ -53,6 +61,12 @@ public class App {
         result = sl.solution(phon3);
         System.out.println(result);
         */
+        Thread thread = new Thread(() -> {
+            String threadName = Thread.currentThread().getName();
+            System.out.println(threadName);
+          });
+          thread.setName("Thread #1");
+          thread.start();
     }
 }
 
