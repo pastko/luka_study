@@ -141,4 +141,21 @@ function listPrimes(num) {
   return resultString.substring(0,resultString.length-1);
 }
 
-console.log(listPrimes(18));
+// console.log(listPrimes(18));
+
+
+let arr = [1,2,3,45,6]
+
+// let str = 'Teamwork skills will take you anywhere';
+// console.log(arr.reduce((a,b) => a.length >= b.length ? a : b))
+
+
+return arr.filter(e=>e % 2 === 0)
+
+let asdbb =4
+
+arr.reduce(e=>{ if( e % 2 === 0) num.push(e); return e; })
+let aaaanum = `dmkfe ${asdbb}`
+
+console.log(aaaanum)
+
