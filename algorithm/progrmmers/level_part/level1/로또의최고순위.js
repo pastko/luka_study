@@ -55,3 +55,8 @@ console.log(solution(num2.lottos,num2.win_nums));
  *   
  * 
  */
+
+
+array.forEach(element => {
+    
+});
