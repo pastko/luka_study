@@ -73,6 +73,45 @@ function firstCharacter(str) {
 
 
 
-let ss = firstCharacter('hello world')
-console.table(ss)
-console.log(typeof ss);
+
+
+
+function studentReports(students) {
+    // TODO: 여기에 코드를 작성합니다.
+    return students
+            .filter(e=>e.gender !== 'male')
+            .map(e=>{
+                e.grades = e.grades.reduce((a,b)=>a+b)/e.grades.length;
+                return e;
+            })
+}
+  
+
+console.table(studentReports([
+    {
+      name: 'Anna',
+      gender: 'female',
+      grades: [4.5, 3.5, 4],
+    },
+    {
+      name: 'Dennis',
+      gender: 'male',
+      country: 'Germany',
+      grades: [5, 1.5, 4],
+    },
+    {
+      name: 'Martha',
+      gender: 'female',
+      grades: [5, 4, 4, 3],
+    },
+    {
+      name: 'Brock',
+      gender: 'male',
+      grades: [4, 3, 2],
+    },
+    {
+        grades: [4, 3, 2],
+        name: 'Andrea',
+        gender: 'female',
+      },
+  ]));
