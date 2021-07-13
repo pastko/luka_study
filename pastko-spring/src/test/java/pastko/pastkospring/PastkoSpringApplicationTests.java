@@ -1,13 +1,13 @@
-package com.example.pastko;
+package pastko.pastkospring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PastkoApplicationTests {
+class PastkoSpringApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
