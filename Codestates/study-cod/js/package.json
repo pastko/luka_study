@@ -1,7 +1,7 @@
 {
   "name": "js",
   "version": "1.0.0",
-  "main": "let.js",
+  "main": "codestates.js",
   "scripts": {
     "test": "mocha test/test.js"
   },

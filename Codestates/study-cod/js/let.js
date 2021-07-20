@@ -211,13 +211,12 @@ function test1(str) {
     return {}
 
   let arr = str.toLowerCase().split(" ");
-  let ob = {};
+  let ob  = {};
   arr.map(e=>
-   {
-      if( e !== '')
-        return ob[e] = (ob[e] | 0) + 1
-    }
-  )
+  {
+    if( e !== '')
+      return ob[e] = (ob[e] | 0) + 1
+  })
   return ob
 }
 
@@ -305,3 +304,6 @@ function test5(arr) {
 //     ['gender', 'female'],
 //   ],
 // ]))
+
+
+
