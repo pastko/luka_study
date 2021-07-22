@@ -13,9 +13,5 @@ public class helloController {
         model.addAttribute("data","hello!");
         return "hello";
     }
-    @PackagePrivate("hello-MVC")
-    public String helloMVC(@RequestParam("name") String Name,Model model){
-        model.addAttribute()
-        return "mvc";
-    }
+
 }

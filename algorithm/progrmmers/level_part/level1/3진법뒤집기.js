@@ -15,7 +15,16 @@
  * 
  */
 
+ function solution(n) {
+    let divis = 0,
+        rest  = 0,
+        result = '';
 
+
+    
+
+    return answer;
+}
 
 
 
@@ -28,6 +37,8 @@
  * 
  * 
  */
+let num1 = 45
+let num2 = 125
  console.log(solution(num1));
 
 
