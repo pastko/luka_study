@@ -439,6 +439,7 @@ function paveBox(boxes) {
 
 
 class workQueue {
+    
     constructor() {
         this.storage = {};
         this.front = 0;
@@ -533,10 +534,182 @@ function queuePrinter(bufferSize, capacities, documents) {
     return workTime;
 }
 
-let bufferSize = 2;
-let capacities = 10;
-let documents = [7, 4, 5, 6];
+// let bufferSize = 2;
+// let capacities = 10;
+// let documents = [7, 4, 5, 6];
 
-let output = queuePrinter(bufferSize, capacities, documents);
-console.log(output) // 8
+// let output = queuePrinter(bufferSize, capacities, documents);
+// console.log(output) // 8
 
+
+
+
+class Tree {
+    constructor(value) {
+          // constructor로 만든 객체는 트리의 Node가 됩니다.
+    this.value = value;
+    this.children = [];
+}
+
+    // 트리의 삽입 메서드를 만듭니다.
+insertNode(value) {
+        // 값이 어떤 이름으로 만들어지고 어느 위치에 붙는지 떠올리는 것이 중요합니다.
+        // TODO: 트리에 붙게 될 childNode를 만들고, children에 넣어야 합니다.
+    const childNode = new Tree(value);
+    this.children.push(childNode);
+}
+
+    // 트리 안에 해당 값이 포함되어 있는지 확인하는 메서드를 만듭니다.a
+contains(value) {
+    console.log(`pre data = ${this.value} : ${value}`)
+        // TODO: 값이 포함되어 있다면 true를 반환하세요. 
+    if (this.value === value) {
+        return true;
+    }
+        // TODO: 값을 찾을 때까지 children 배열을 순회하며 childNode를 탐색하세요.
+    
+    for(let element of this.children){
+        console.log(element, value);
+        if( element.contains(value))
+            return true;
+    }        
+
+        // 전부 탐색했음에도 불구하고 찾지 못했다면 false를 반환합니다.
+    return false;
+}
+}
+
+
+const rootNode = new Tree(null);
+
+for(let i = 0; i <= 2; i++) {
+if(rootNode.children[i]) {
+rootNode.children[i].insertNode(i)
+}
+rootNode.insertNode(i); 
+}
+
+// console.table(rootNode)
+// //rootNode; // {value: null, children: Array(5)}
+// console.log(rootNode.contains(5)); //false
+// console.log(rootNode.contains(1)); //true
+
+
+// directed graph (방향 그래프)
+// unweighted (비가중치)
+// adjacency matrix (인접 행렬)
+// 이해를 돕기 위해 기존 배열의 인덱스를 정점으로 사용합니다 (0, 1, 2, ... --> 정점)
+
+class GraphWithAdjacencyMatrix {
+	constructor() {
+		this.matrix = [];
+	}
+
+	addVertex() {
+        //버텍스를 추가합니다.
+		const currentLength = this.matrix.length;
+		for (let i = 0; i < currentLength; i++) {
+			this.matrix[i].push(0);
+		}
+		this.matrix.push(new Array(currentLength + 1).fill(0));
+	}
+
+	contains(vertex) {
+        //TODO: 버텍스가 있는지 확인합니다.
+        if(this.matrix[vertex])
+            return true;
+        else return false;
+	}
+
+	addEdge(from, to) {
+		const currentLength = this.matrix.length;
+		if (from === undefined || to === undefined) {
+			console.log("2개의 인자가 있어야 합니다.");
+			return;
+		}
+        console.log(from,to, currentLength)
+        //TODO: 간선을 추가할 수 없는 상황에서는 추가하지 말아야 합니다.
+		if (from + 1 > currentLength || to + 1 > currentLength || from < 0 || to < 0) {
+			console.log("범위가 매트릭스 밖에 있습니다.");
+			return;
+		}
+        //TODO: 간선을 추가해야 합니다.
+        this.matrix[from][to] = 1;
+
+	}
+
+	hasEdge(from, to) {
+		//TODO: 두 버텍스 사이에 간선이 있는지 확인합니다.
+        return this.matrix[from][to] === 1
+	}
+
+	removeEdge(from, to) {
+		const currentLength = this.matrix.length;
+		if (from === undefined || to === undefined) {
+			console.log("2개의 인자가 있어야 합니다.");
+			return;
+		}
+        //TODO: 간선을 지울 수 없는 상황에서는 지우지 말아야 합니다.
+		if (from + 1 > currentLength || to + 1 > currentLength || from < 0 || to < 0) {
+            console.log("범위가 매트릭스 밖에 있습니다.");
+			return;
+		}
+        //TODO: 간선을 지워야 합니다.
+        this.matrix[from][to] = 0;
+	}
+}
+
+const adjMatrix = new GraphWithAdjacencyMatrix();
+adjMatrix.addVertex();
+adjMatrix.addVertex();
+adjMatrix.addVertex();
+console.table(adjMatrix.matrix);
+/*
+							TO
+		 	  	 0  1  2
+		  	0	[0, 0, 0],
+	FROM 	1	[0, 0, 0],
+		  	2	[0, 0, 0]
+*/
+let zeroExists = adjMatrix.contains(0);
+console.log(zeroExists); // true
+let oneExists = adjMatrix.contains(1);
+console.log(oneExists); // true
+let twoExists = adjMatrix.contains(2);
+console.log(twoExists); // true
+
+adjMatrix.addEdge(0, 1);
+adjMatrix.addEdge(0, 2);
+adjMatrix.addEdge(1, 2);
+
+let zeroToOneEdgeExists = adjMatrix.hasEdge(0, 1);
+console.table(zeroToOneEdgeExists); // true
+let zeroToTwoEdgeExists = adjMatrix.hasEdge(0, 2);
+console.table(zeroToTwoEdgeExists); // true
+let oneToZeroEdgeExists = adjMatrix.hasEdge(1, 0);
+console.table(oneToZeroEdgeExists); // false
+
+console.table(adjMatrix.matrix);
+/*
+							TO
+		 	  	 0  1  2
+		  	0	[0, 1, 1],
+	FROM 	1	[0, 0, 1],
+		  	2	[0, 0, 0]
+*/
+
+adjMatrix.removeEdge(1, 2);
+adjMatrix.removeEdge(0, 2);
+let oneToTwoEdgeExists = adjMatrix.hasEdge(1, 2);
+console.table(oneToTwoEdgeExists); // false
+zeroToTwoEdgeExists = adjMatrix.hasEdge(0, 2);
+console.table(zeroToTwoEdgeExists); // false
+
+console.table(adjMatrix.matrix);
+/*
+							TO
+		 	  	 0  1  2
+		  	0	[0, 1, 0],
+	FROM 	1	[0, 0, 0],
+		  	2	[0, 0, 0]
+*/
