@@ -262,10 +262,10 @@ function test4(arr) {
   )
 }
 
-console.log(test4([
-  { firstName: 'Joe', lastName: 'Blow', age: 42, role: 'clerk' },
-  { firstName: 'Mary', lastName: 'Jenkins', age: 36, role: 'manager' },
-]))
+// console.log(test4([
+//   { firstName: 'Joe', lastName: 'Blow', age: 42, role: 'clerk' },
+//   { firstName: 'Mary', lastName: 'Jenkins', age: 36, role: 'manager' },
+// ]))
 
 function test5(arr) {
   // TODO: 여기에 코드를 작성합니다.
@@ -307,3 +307,13 @@ function test5(arr) {
 
 
 
+
+
+let left  = ( )=>{console.log("left");  return true; }
+let right = () =>{console.log("right"); return false;}
+
+//console.log( left() | right() );
+
+
+
+console.log( 0 || 4 );
