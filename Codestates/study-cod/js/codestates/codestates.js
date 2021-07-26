@@ -164,8 +164,55 @@ const bubbleSort = function (arr) {
 
 
 
+// toy 5번 문제 
+
+let tiling = function (n) {
+    // TODO: 여기에 코드를 작성합니다.
+    let tileArray = [ 1 , 2 ]
+    
+    if( n === 1)
+        return tileArray[0];
+    if( n === 2)
+        return tileArray[1];
+    
+    for(let i = 2 ; i < n ; ++i)
+    {
+        tileArray.push(tileArray[i-2] + tileArray[i-1]);
+        console.table(tileArray)
+    }
+    return tileArray[n-1]  
+};
 
 
+let output = tiling(2);
+console.log(output); // --> 2
+
+output = tiling(4);
+console.log(output); // --> 5
+/* 
+2 x 4 보드에 타일을 놓는 방법은 5가지
+각 타일을 a, b, c, d로 구분
+
+2 | a b c d
+1 | a b c d 
+------------
+
+2 | a a c c
+1 | b b d d 
+------------
+
+2 | a b c c
+1 | a b d d 
+------------
+
+2 | a a c d
+1 | b b c d 
+------------
+
+2 | a b b d
+1 | a c c d 
+------------
+*/
 
 
 function unpackGiftbox(giftBox, wish) {
@@ -438,109 +485,6 @@ function paveBox(boxes) {
 
 
 
-class workQueue {
-    
-    constructor() {
-        this.storage = {};
-        this.front = 0;
-        this.rear = 0;
-    }
-
-    working ()
-    {
-        let deleteWorkor = []
-        for(let [key, ob] of Object.entries(this.storage))
-        {
-            console.log(key,ob)
-            this.storage[key].value = ob.value--;
-            if(this.storage[key].value <= 0){
-                deleteWorkor(key);
-                this.front--;
-            }
-                
-        }
-        console.log(deleteWorkor)
-        return deleteWorkor.reduce((acc,res)=>{
-            this.enqueue(res);
-            return acc + res
-        },0)
-        
-    }
-
-    size() {
-        return this.rear - this.front;
-    } 
-      // 큐에 데이터를 추가 할 수 있어야 합니다.
-    enqueue(element) {
-        this.storage[this.rear] = element;
-        this.rear += 1;
-    }  
-
-    get() {
-        return Object.values(this.storage);
-    }
-
-    emtpy() {
-        return Object.keys(this.storage).length === 0;
-    }
-    
-      // 가장 먼저 추가된 데이터가 가장 먼저 추출되어야 합니다.
-    dequeue() {
-      // 빈 큐에 dequeue 연산을 적용해도 에러가 발생하지 않아야 합니다
-        if (this.front === this.rear) {
-            return;
-        }
-    
-        const result = this.storage[this.front];
-        delete this.storage[this.front];
-        this.front += 1;
-    
-        return result;
-    }
-
-    makeEmtpy(){
-        this.storage    = {};
-        this.rear       = 0;
-        this.front      = 0;
-    }
-}
-
-function queuePrinter(bufferSize, capacities, documents) {
-    // TODO: 여기에 코드를 작성합니다.
-    let workerQueue = new workQueue(),
-        workTime    = 0
-        workcap     = capacities;
-
-    workcap -= documents[0];
-    workerQueue.enqueue({ "key" : documents.shift() , "value" : bufferSize })
-    while(!workerQueue.emtpy() && documents.length !== 0)
-    {
-        workTime++;
-        workcap += workerQueue.working();
-
-        if(documents.length !== 0){
-            if( capacities >= workcap + documents[0])
-            {
-                workcap -= documents[0];
-                workerQueue.enqueue({ "key" : documents.shift() , "value" : bufferSize })
-            }
-        }
-        // timer ++
-        // working
-        // cap 
-        // if cap .entpy than enque
-        console.log(`[post : ${workTime}] --  : ${workerQueue.get()} [${ workerQueue.size()}] : [${ documents}]`)
-    }
-    return workTime;
-}
-
-// let bufferSize = 2;
-// let capacities = 10;
-// let documents = [7, 4, 5, 6];
-
-// let output = queuePrinter(bufferSize, capacities, documents);
-// console.log(output) // 8
-
 
 
 
@@ -635,7 +579,6 @@ class GraphWithAdjacencyMatrix {
 		}
         //TODO: 간선을 추가해야 합니다.
         this.matrix[from][to] = 1;
-
 	}
 
 	hasEdge(from, to) {
@@ -659,57 +602,57 @@ class GraphWithAdjacencyMatrix {
 	}
 }
 
-const adjMatrix = new GraphWithAdjacencyMatrix();
-adjMatrix.addVertex();
-adjMatrix.addVertex();
-adjMatrix.addVertex();
-console.table(adjMatrix.matrix);
-/*
-							TO
-		 	  	 0  1  2
-		  	0	[0, 0, 0],
-	FROM 	1	[0, 0, 0],
-		  	2	[0, 0, 0]
-*/
-let zeroExists = adjMatrix.contains(0);
-console.log(zeroExists); // true
-let oneExists = adjMatrix.contains(1);
-console.log(oneExists); // true
-let twoExists = adjMatrix.contains(2);
-console.log(twoExists); // true
+// const adjMatrix = new GraphWithAdjacencyMatrix();
+// adjMatrix.addVertex();
+// adjMatrix.addVertex();
+// adjMatrix.addVertex();
+// console.table(adjMatrix.matrix);
+// /*
+// 							TO
+// 		 	  	 0  1  2
+// 		  	0	[0, 0, 0],
+// 	FROM 	1	[0, 0, 0],
+// 		  	2	[0, 0, 0]
+// */
+// let zeroExists = adjMatrix.contains(0);
+// console.log(zeroExists); // true
+// let oneExists = adjMatrix.contains(1);
+// console.log(oneExists); // true
+// let twoExists = adjMatrix.contains(2);
+// console.log(twoExists); // true
 
-adjMatrix.addEdge(0, 1);
-adjMatrix.addEdge(0, 2);
-adjMatrix.addEdge(1, 2);
+// adjMatrix.addEdge(0, 1);
+// adjMatrix.addEdge(0, 2);
+// adjMatrix.addEdge(1, 2);
 
-let zeroToOneEdgeExists = adjMatrix.hasEdge(0, 1);
-console.table(zeroToOneEdgeExists); // true
-let zeroToTwoEdgeExists = adjMatrix.hasEdge(0, 2);
-console.table(zeroToTwoEdgeExists); // true
-let oneToZeroEdgeExists = adjMatrix.hasEdge(1, 0);
-console.table(oneToZeroEdgeExists); // false
+// let zeroToOneEdgeExists = adjMatrix.hasEdge(0, 1);
+// console.table(zeroToOneEdgeExists); // true
+// let zeroToTwoEdgeExists = adjMatrix.hasEdge(0, 2);
+// console.table(zeroToTwoEdgeExists); // true
+// let oneToZeroEdgeExists = adjMatrix.hasEdge(1, 0);
+// console.table(oneToZeroEdgeExists); // false
 
-console.table(adjMatrix.matrix);
-/*
-							TO
-		 	  	 0  1  2
-		  	0	[0, 1, 1],
-	FROM 	1	[0, 0, 1],
-		  	2	[0, 0, 0]
-*/
+// console.table(adjMatrix.matrix);
+// /*
+// 							TO
+// 		 	  	 0  1  2
+// 		  	0	[0, 1, 1],
+// 	FROM 	1	[0, 0, 1],
+// 		  	2	[0, 0, 0]
+// */
 
-adjMatrix.removeEdge(1, 2);
-adjMatrix.removeEdge(0, 2);
-let oneToTwoEdgeExists = adjMatrix.hasEdge(1, 2);
-console.table(oneToTwoEdgeExists); // false
-zeroToTwoEdgeExists = adjMatrix.hasEdge(0, 2);
-console.table(zeroToTwoEdgeExists); // false
+// adjMatrix.removeEdge(1, 2);
+// adjMatrix.removeEdge(0, 2);
+// let oneToTwoEdgeExists = adjMatrix.hasEdge(1, 2);
+// console.table(oneToTwoEdgeExists); // false
+// zeroToTwoEdgeExists = adjMatrix.hasEdge(0, 2);
+// console.table(zeroToTwoEdgeExists); // false
 
-console.table(adjMatrix.matrix);
-/*
-							TO
-		 	  	 0  1  2
-		  	0	[0, 1, 0],
-	FROM 	1	[0, 0, 0],
-		  	2	[0, 0, 0]
-*/
+// console.table(adjMatrix.matrix);
+// /*
+// 							TO
+// 		 	  	 0  1  2
+// 		  	0	[0, 1, 0],
+// 	FROM 	1	[0, 0, 0],
+// 		  	2	[0, 0, 0]
+// */

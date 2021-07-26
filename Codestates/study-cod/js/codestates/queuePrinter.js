@@ -99,13 +99,15 @@ function queuePrinter(bufferSize, capacities, documents) {
     while( workerFlag !== 0 || documents.length !== 0)
     {
         workTime++;
+        // 작업 시간 감소
         for(let i = 0 ; i < workerFlag ; ++i)
         {
             workerQueue[i].value--;
         }
         
+        // 작업 공간에 작업이 끝난 문서가 있는지 확인.
         if(workerQueue.length != 0){
-        if(workerQueue[0].value === 0)
+            if(workerQueue[0].value === 0)
             {
                 workcap -= workerQueue[0].key;
                 workerQueue.shift();
@@ -114,6 +116,7 @@ function queuePrinter(bufferSize, capacities, documents) {
         }
         console.log(`[pre : ${workTime}] --  : ${JSON.stringify(workerQueue)} [${ workerFlag}] : [${workcap}]: [${documents.length}]`)
 
+        // 작업 공간에 자리가 비었거나, 용량이 남았다면 새로운 문서를 작업공간에 입력한다.
         if(documents.length !== 0){
             if( capacities >= workcap + documents[0] && workerFlag < bufferSize)
             {
@@ -143,7 +146,7 @@ let bufferSize = 2;
 let capacities = 10;
 let documents = [7, 4, 5, 6];
 
-//let output = queuePrinter(bufferSize, capacities, documents);
-let output = queuePrinter(100, 100, [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+let output = queuePrinter(bufferSize, capacities, documents);
+//let output = queuePrinter(100, 100, [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
 console.log(output) // 8
 
