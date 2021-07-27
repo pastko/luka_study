@@ -27,11 +27,6 @@ function createMatrix(edges) {
             matrixArray[from][to] = 1;
         }
     });
-    
-    
-    
-
-
     return matrixArray;
 }
 
