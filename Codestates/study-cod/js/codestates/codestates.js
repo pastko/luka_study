@@ -184,11 +184,11 @@ let tiling = function (n) {
 };
 
 
-let output = tiling(2);
-console.log(output); // --> 2
+// let output = tiling(2);
+// console.log(output); // --> 2
 
-output = tiling(4);
-console.log(output); // --> 5
+// output = tiling(4);
+// console.log(output); // --> 5
 /* 
 2 x 4 보드에 타일을 놓는 방법은 5가지
 각 타일을 a, b, c, d로 구분
@@ -204,7 +204,7 @@ console.log(output); // --> 5
 2 | a b c c
 1 | a b d d 
 ------------
-
+``
 2 | a a c d
 1 | b b c d 
 ------------
@@ -213,6 +213,53 @@ console.log(output); // --> 5
 1 | a c c d 
 ------------
 */
+
+
+
+
+
+// toy 8
+
+const largestProductOfThree = function (arr) {
+    // TODO: 여기에 코드를 작성합니다.
+    let minus = arr.filter(e=>e<0).sort((a,b)=>b-a);
+    let plus = arr.filter(e=>e>=0).sort((a,b)=>b-a);
+
+    if( arr.length === minus.length)
+        return minus.slice(-1,-3).reduce((acc,res)=>acc*res);
+
+    if( plus.length)    
+    
+
+    return arr.sort((a,b)=>Math.abs(b)-Math.abs(a)).slice(0,3).reduce((acc,res)=>acc*res);
+};
+
+
+const largestProductOfThree = function (arr) {
+    // TODO: 여기에 코드를 작성합니다.
+    let sortArr = arr.sort((a,b)=>Math.abs(b)-Math.abs(a));
+    let minusCount = 0,
+        maxMulti   = 1;
+    
+    for(let i = 0 ; i < arr.length-3 ; ++i)
+    {
+        if( sortArr[i] > 0   &&
+            sortArr[i+1] > 0 &&
+            sortArr[i+2] > 0 )
+            return sortArr[i] * sortArr[i+1] * sortArr[i+2];
+        
+    }
+
+    
+
+    return 
+};
+
+let output = largestProductOfThree([2, 1, 3, 7]);
+console.log(output); // --> 42 (= 2 * 3 * 7)
+
+output = largestProductOfThree([-1, 2, -5, 7]);
+console.log(output); // --> 35 (= -1 * -5 * 7)
 
 
 function unpackGiftbox(giftBox, wish) {
