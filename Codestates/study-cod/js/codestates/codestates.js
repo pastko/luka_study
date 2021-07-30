@@ -369,24 +369,15 @@ const largestProductOfThree = function (arr) {
 
 
 const largestProductOfThree = function (arr) {
-    // TODO: 여기에 코드를 작성합니다.
-    let sortArr = arr.sort((a,b)=>Math.abs(b)-Math.abs(a));
-    let minusCount = 0,
-        maxMulti   = 1;
-    
-    for(let i = 0 ; i < arr.length-3 ; ++i)
-    {
-        if( sortArr[i] > 0   &&
-            sortArr[i+1] > 0 &&
-            sortArr[i+2] > 0 )
-            return sortArr[i] * sortArr[i+1] * sortArr[i+2];
-        
-    }
-
-    
-
-    return 
+// TODO: 여기에 코드를 작성합니다.
+    let sortArray = arr.sort((a,b)=>b-a);
+    return Math.max(
+        sortArray.slice(0,3).reduce((acc,res)=>acc*res),
+        sortArray[0] * sortArray[arr.length-1] * sortArray[arr.length-2]
+    );
 };
+      
+
 
 // let output = largestProductOfThree([2, 1, 3, 7]);
 // console.log(output); // --> 42 (= 2 * 3 * 7)
