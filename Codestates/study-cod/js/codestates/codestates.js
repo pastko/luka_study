@@ -260,6 +260,140 @@ console.log(output); // --> 42 (= 2 * 3 * 7)
 
 output = largestProductOfThree([-1, 2, -5, 7]);
 console.log(output); // --> 35 (= -1 * -5 * 7)
+// toy 6번
+const sudoku = function (board) {
+    // TODO: 여기에 코드를 작성합니다.
+    let emptyNumberArray = [1,2,3,4,5,6,7,8,9];
+    // 3x3 순회.
+    // 해당 열 순회
+    // 해당 행 순회
+    // 가능 한 수 찾기 
+    for(let i = 0 ; i < 3; ++i)
+    {
+        for(let j = 0 ; j < 3; ++j)
+        {
+            let s1 = findNumber(board,i);
+            console.log(s1);            
+        }
+    }
+    
+
+    
+    return emptyNumberArray
+};
+
+const findNumber = (board,x,y)=>{
+    let emptyNumberArray = [1,2,3,4,5,6,7,8,9];
+
+    for(let i = 0 ; i < 3 ; ++i)
+    {
+        for(let j = 0 ; j < 3 ; ++j)
+        {
+            emptyNumberArray = emptyNumberArray.filter(e=>board[i][j]!==e);
+        }
+    }    
+
+    for(let i = 0 ; i < board.length ; ++i)
+    {
+        emptyNumberArray = emptyNumberArray.filter(e=>board[x][i]!==e);
+    }
+
+    for(let i = 0 ; i < board.length ; ++i)
+    {
+        emptyNumberArray = emptyNumberArray.filter(e=>board[i][y]!==e);
+    }
+    return emptyNumberArray
+}
+
+function isCurrect(x, y, num, board){
+    for(let i=0; i<9; i++){
+        if(num == board[y][i]) return false 
+        // 가로에 1~9 중 i랑 같은 숫자가 있으면 i는 빈칸에 넣을 수 없으니까 false 
+    }
+
+    for(let i=0; i<9; i++){
+        if(num == board[i][x]) return false
+        // 세로에 1~9 중 i랑 같은 숫자가 있으면 i는 빈칸에 넣을 수 없으니까 false 
+    }
+
+    for(var i=y_; i<y+3; i++){
+        for(var j=x_; j<x+3; j++){
+          // 3x3 사각형 안에 
+            if(num == board[i][j]) return false 
+          // i랑 같은 숫자가 있으면 i는 빈칸에 넣을 수 없으니까 false 
+        }
+    }
+    return true
+}
+
+
+let board = [
+    [0, 3, 0, 2, 6, 0, 7, 0, 1],
+    [6, 8, 0, 0, 7, 0, 0, 9, 0],
+    [1, 9, 0, 0, 0, 4, 5, 0, 0],
+    [8, 2, 0, 1, 0, 0, 0, 4, 0],
+    [0, 0, 4, 6, 0, 2, 9, 0, 0],
+    [0, 5, 0, 0, 0, 3, 0, 2, 8],
+    [0, 0, 9, 3, 0, 0, 0, 7, 4],
+    [0, 4, 0, 0, 5, 0, 0, 3, 6],
+    [7, 0, 3, 0, 1, 8, 0, 0, 0],
+];
+
+// let output = sudoku(board);
+// console.log(output); // -->
+/* 
+[
+[4, 3, 5, 2, 6, 9, 7, 8, 1],
+[6, 8, 2, 5, 7, 1, 4, 9, 3],
+[1, 9, 7, 8, 3, 4, 5, 6, 2],
+[8, 2, 6, 1, 9, 5, 3, 4, 7],
+[3, 7, 4, 6, 8, 2, 9, 1, 5],
+[9, 5, 1, 7, 4, 3, 6, 2, 8],
+[5, 1, 9, 3, 2, 6, 8, 7, 4],
+[2, 4, 8, 9, 5, 7, 1, 3, 6],
+[7, 6, 3, 4, 1, 8, 2, 5, 9],
+];
+   */
+
+
+// toy 7
+let dfs = function (node) {
+    // TODO: 여기에 코드를 작성합니다.
+    let result = [];
+    if(node.children.length === 0)
+        return [node.value];
+    
+    result = [node.value]
+    if( node.children[0] !== undefined) result = [...result, ...dfs(node.children[0])]
+    if( node.children[1] !== undefined) result = [...result, ...dfs(node.children[1])]
+
+    return result;
+};
+
+// 이 아래 코드는 변경하지 않아도 됩니다. 자유롭게 참고하세요.
+let Node = function (value) {
+    this.value = value;
+    this.children = [];
+};
+
+// 위 Node 객체로 구성되는 트리는 매우 단순한 형태의 트리입니다.
+// membership check(중복 확인)를 따로 하지 않습니다.
+Node.prototype.addChild = function (child) {
+    this.children.push(child);
+    return child;
+};
+  
+let root = new Node(1);
+let rootChild1 = root.addChild(new Node(2));
+let rootChild2 = root.addChild(new Node(3));
+let leaf1 = rootChild1.addChild(new Node(4));
+let leaf2 = rootChild1.addChild(new Node(5));
+let output = dfs(root);
+console.log(output); // --> [1, 2, 4, 5, 3]
+
+
+
+
 
 
 function unpackGiftbox(giftBox, wish) {
