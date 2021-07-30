@@ -217,49 +217,6 @@ let tiling = function (n) {
 
 
 
-
-// toy 8
-
-const largestProductOfThree = function (arr) {
-    // TODO: 여기에 코드를 작성합니다.
-    let minus = arr.filter(e=>e<0).sort((a,b)=>b-a);
-    let plus = arr.filter(e=>e>=0).sort((a,b)=>b-a);
-
-    if( arr.length === minus.length)
-        return minus.slice(-1,-3).reduce((acc,res)=>acc*res);
-
-    if( plus.length)    
-    
-
-    return arr.sort((a,b)=>Math.abs(b)-Math.abs(a)).slice(0,3).reduce((acc,res)=>acc*res);
-};
-
-
-const largestProductOfThree = function (arr) {
-    // TODO: 여기에 코드를 작성합니다.
-    let sortArr = arr.sort((a,b)=>Math.abs(b)-Math.abs(a));
-    let minusCount = 0,
-        maxMulti   = 1;
-    
-    for(let i = 0 ; i < arr.length-3 ; ++i)
-    {
-        if( sortArr[i] > 0   &&
-            sortArr[i+1] > 0 &&
-            sortArr[i+2] > 0 )
-            return sortArr[i] * sortArr[i+1] * sortArr[i+2];
-        
-    }
-
-    
-
-    return 
-};
-
-let output = largestProductOfThree([2, 1, 3, 7]);
-console.log(output); // --> 42 (= 2 * 3 * 7)
-
-output = largestProductOfThree([-1, 2, -5, 7]);
-console.log(output); // --> 35 (= -1 * -5 * 7)
 // toy 6번
 const sudoku = function (board) {
     // TODO: 여기에 코드를 작성합니다.
@@ -383,16 +340,63 @@ Node.prototype.addChild = function (child) {
     return child;
 };
   
-let root = new Node(1);
-let rootChild1 = root.addChild(new Node(2));
-let rootChild2 = root.addChild(new Node(3));
-let leaf1 = rootChild1.addChild(new Node(4));
-let leaf2 = rootChild1.addChild(new Node(5));
-let output = dfs(root);
-console.log(output); // --> [1, 2, 4, 5, 3]
+// let root = new Node(1);
+// let rootChild1 = root.addChild(new Node(2));
+// let rootChild2 = root.addChild(new Node(3));
+// let leaf1 = rootChild1.addChild(new Node(4));
+// let leaf2 = rootChild1.addChild(new Node(5));
+// let output = dfs(root);
+// console.log(output); // --> [1, 2, 4, 5, 3]
 
 
 
+
+// toy 8
+
+const largestProductOfThree = function (arr) {
+    // TODO: 여기에 코드를 작성합니다.
+    let minus = arr.filter(e=>e<0).sort((a,b)=>b-a);
+    let plus = arr.filter(e=>e>=0).sort((a,b)=>b-a);
+
+    if( arr.length === minus.length)
+        return minus.slice(-1,-3).reduce((acc,res)=>acc*res);
+
+    if( plus.length)    
+    
+
+    return arr.sort((a,b)=>Math.abs(b)-Math.abs(a)).slice(0,3).reduce((acc,res)=>acc*res);
+};
+
+
+const largestProductOfThree = function (arr) {
+    // TODO: 여기에 코드를 작성합니다.
+    let sortArr = arr.sort((a,b)=>Math.abs(b)-Math.abs(a));
+    let minusCount = 0,
+        maxMulti   = 1;
+    
+    for(let i = 0 ; i < arr.length-3 ; ++i)
+    {
+        if( sortArr[i] > 0   &&
+            sortArr[i+1] > 0 &&
+            sortArr[i+2] > 0 )
+            return sortArr[i] * sortArr[i+1] * sortArr[i+2];
+        
+    }
+
+    
+
+    return 
+};
+
+// let output = largestProductOfThree([2, 1, 3, 7]);
+// console.log(output); // --> 42 (= 2 * 3 * 7)
+
+// output = largestProductOfThree([-1, 2, -5, 7]);
+// console.log(output); // --> 35 (= -1 * -5 * 7)
+
+
+
+// toy 9 
 
 
 
