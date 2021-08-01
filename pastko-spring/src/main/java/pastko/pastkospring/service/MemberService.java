@@ -2,13 +2,18 @@ package pastko.pastkospring.service;
 
 import pastko.pastkospring.domain.Member;
 import pastko.pastkospring.repository.MemoryMemberRepository;
+import pastko.pastkospring.repository.MemoryRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 
 public class MemberService {
-    private final MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemoryMemberRepository memberRepository;
+
+    public MemberService(MemoryMemberRepository isMemoryRepository) {
+        this.memberRepository = isMemoryRepository;
+    }
 
     /**
      * 회원가입
