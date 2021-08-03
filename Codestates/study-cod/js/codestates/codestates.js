@@ -16,16 +16,16 @@ function getcombine(arr, select)
 }
 
 
-function getcombine(arr) {
+// function getcombine(arr) {
     
 
-    let firstFlag   = add[0];
-    let results     = [];
-    let filterrFlga = arr.filter((e)=>e!==firstFlag);
+//     let firstFlag   = add[0];
+//     let results     = [];
+//     let filterrFlga = arr.filter((e)=>e!==firstFlag);
 
 
 
-}
+// }
 
 
 function orderOfPresentation (N, K) 
@@ -481,14 +481,62 @@ const binarySearch = function (arr, target) {
     return -1;
 };
 
-let output = binarySearch([0, 1, 2, 3, 4, 5, 6], 1);
-console.log(output); // --> 2
+// let output = binarySearch([0, 1, 2, 3, 4, 5, 6], 1);
+// console.log(output); // --> 2
 
-output = binarySearch([4, 5, 6, 9], 100);
-console.log(output); // --> -1
+// output = binarySearch([4, 5, 6, 9], 100);
+// console.log(output); // --> -1
 
-output = binarySearch([4, 6, 8, 9, 10, 15], 9)
-console.log(output); // --> -1
+// output = binarySearch([4, 6, 8, 9, 10, 15], 9)
+// console.log(output); // --> -1
+
+function fe(arr, select)
+{
+    let results = [];    
+    if( select === 1 ) return arr.map(e=>[e]);
+
+    for(let i = 0 ; i < arr.length; ++i)
+    {
+        const rest = arr.filter((e)=>e!==arr[i]);
+        const combinations = fe(rest, select - 1);
+        const attached  = combinations.map((rest) => [arr[i], ...rest]);
+        results.push(...attached); 
+    }
+    return results;
+}
+
+// toy 11
+const powerSet = function (str) {
+    // TODO: 여기에 코드를 작성합니다.
+    let strSort = [ ...(new Set(str.split('').sort((a,b)=>a.charCodeAt(0)-b.charCodeAt(0))))].join('');
+    
+    let result = ['']
+    console.log(strSort);
+
+    // 1, 12, 123 , 2 , 23 , 3
+    for(let i = 1 , j = 0 ; j < strSort.length ; ++i)
+    {
+        console.log(`${j} - ${i} : ${result}`)
+        if( i < strSort.length){
+            result.push(strSort.slice(j,i));
+        }else{
+            result.push(strSort.slice(j));
+            j++;
+            i = j
+        }
+    }
+    return result;
+};
+
+let output1 = powerSet('abc');
+console.log(output1); // ['', 'a', 'ab', 'abc', 'ac', 'b', 'bc', 'c']
+
+let output2 = powerSet('jjump');
+console.log(output2); // ['', 'j', 'jm', 'jmp', 'jmpu', 'jmu', 'jp', 'jpu', 'ju', 'm', 'mp', 'mpu', 'mu', 'p', 'pu', 'u']
+
+let output3 = powerSet('bbaaa');
+console.log(output3)
+
 
 function unpackGiftbox(giftBox, wish) {
     // TODO: 여기에 코드를 작성합니다.
