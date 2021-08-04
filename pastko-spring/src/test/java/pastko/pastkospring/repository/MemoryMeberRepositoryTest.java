@@ -3,6 +3,7 @@ package pastko.pastkospring.repository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
 import pastko.pastkospring.domain.Member;
 
 import java.util.List;
@@ -15,18 +16,19 @@ public class MemoryMeberRepositoryTest {
     public void afterEach(){
         repository.clearStore();
     }
-
+    @Value("${user.name}")
+    String names;
 
     @Test
     public void save(){
         Member member = new Member();
-        member.setName("spring");
+        member.setName(names);
 
         repository.save((member));
         Member result = repository.findById(member.getId()).get();
         //System.out.println("result"  + (result == member));
         Assertions.assertEquals(member, result);
-        assertThat(member).isEqualTo(result);
+        assertThat(member.getName()).isEqualTo("");
     }
 
     @Test
