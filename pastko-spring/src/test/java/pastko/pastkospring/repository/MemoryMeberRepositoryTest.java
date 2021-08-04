@@ -16,19 +16,17 @@ public class MemoryMeberRepositoryTest {
     public void afterEach(){
         repository.clearStore();
     }
-    @Value("${user.name}")
-    String names;
 
     @Test
     public void save(){
         Member member = new Member();
-        member.setName(names);
+        member.setName("spring");
 
         repository.save((member));
         Member result = repository.findById(member.getId()).get();
         //System.out.println("result"  + (result == member));
         Assertions.assertEquals(member, result);
-        assertThat(member.getName()).isEqualTo("");
+        assertThat(member).isEqualTo(result);
     }
 
     @Test
@@ -43,9 +41,6 @@ public class MemoryMeberRepositoryTest {
 
         Member result =  repository.findByName("spring1").get();
         assertThat(result).isEqualTo(member1);
-
-
-
     }
 
     @Test
