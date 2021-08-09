@@ -679,7 +679,7 @@ const rotatedArraySearch = function (rotated, target) {
     {
         for(let i = rotated.length - 1 ; i >= 0 ; --i )
         {
-            if(rotated[i]===target){
+            if(rotated[i] === target){
                 result = i;
                 break;
             }
@@ -709,6 +709,36 @@ console.log(output); // --> -1
 
 output = rotatedArraySearch([9, 10, 15, 4, 6, 8], 6);
 console.log(output); // --> 4
+
+// toy 15 
+const primePassword = (curPwd, newPwd) => {
+    // TODO: 여기에 코드를 작성합니다.
+    let result = 0;
+    if( curPwd === newPwd)
+        return 0;
+
+    for(let i = curPwd ; i <= newPwd ; ++i)
+    {
+        let flag = 0;
+        for(let j = 2 ; j < Math.sqrt(i); ++j)
+        {
+        if( i % j === 0 ){
+            flag = 1;
+            break;
+        }
+        else
+        {
+            flag = 2;
+        }
+        }
+        if( flag === 2)
+        result++;
+    }
+    // curPwd 와 newpwd 사이의 소수 개수 ..;;; 
+    // curPwd 를 변경 하는 횟수 === 변경시 소수여야함..; 흠...
+    return result;
+};
+  
 
 
 function unpackGiftbox(giftBox, wish) {
