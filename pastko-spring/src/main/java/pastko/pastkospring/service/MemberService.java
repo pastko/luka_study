@@ -1,5 +1,6 @@
 package pastko.pastkospring.service;
 
+import org.springframework.stereotype.Service;
 import pastko.pastkospring.domain.Member;
 import pastko.pastkospring.repository.MemoryMemberRepository;
 import pastko.pastkospring.repository.MemoryRepository;
@@ -7,7 +8,7 @@ import pastko.pastkospring.repository.MemoryRepository;
 import java.util.List;
 import java.util.Optional;
 
-
+@Service
 public class MemberService {
     private final MemoryMemberRepository memberRepository;
 
