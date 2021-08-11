@@ -701,14 +701,14 @@ const rotatedArraySearch = function (rotated, target) {
     return result;
 };
 
-let output = rotatedArraySearch([10, 11, 12, 3, 6, 7, 8, 9], 11);
-console.log(output); // --> 5
+// let output = rotatedArraySearch([10, 11, 12, 3, 6, 7, 8, 9], 11);
+// console.log(output); // --> 5
 
-output = rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 100);
-console.log(output); // --> -1
+// output = rotatedArraySearch([4, 5, 6, 0, 1, 2, 3], 100);
+// console.log(output); // --> -1
 
-output = rotatedArraySearch([9, 10, 15, 4, 6, 8], 6);
-console.log(output); // --> 4
+// output = rotatedArraySearch([9, 10, 15, 4, 6, 8], 6);
+// console.log(output); // --> 4
 
 // toy 15 
 const primePassword = (curPwd, newPwd) => {
@@ -739,6 +739,35 @@ const primePassword = (curPwd, newPwd) => {
     return result;
 };
   
+
+
+// toy 16 
+const quickSort = function (arr) {
+    // TODO: 여기에 코드를 작성합니다.
+    if (arr.length < 2) {
+      return arr;
+    }
+    const pivot = [arr[0]];
+    const left = [];
+    const right = [];
+    
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
+        } else if (arr[i] > pivot) {
+            right.push(arr[i]);
+        } else {
+            pivot.push(arr[i]);
+        }
+    }  
+    return [ ...quickSort(left), ...pivot ,...quickSort(right)];
+};
+
+  
+let output = quickSort([3, 1, 21]);
+console.log(output); // --> [1, 3, 21]
+output = quickSort([ 20, -10, -11, 2, 29 ]);
+console.log(output); // --> [1, 3, 21]
 
 
 function unpackGiftbox(giftBox, wish) {
