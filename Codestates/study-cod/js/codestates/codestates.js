@@ -840,6 +840,25 @@ const LPS = function (str) {
     return 0;
 };
 
+const LPS = function (str) {
+    if (str.length < 2) return 0;
+    let resultStr = '';
+
+    // 가장 긴 LPS 후보부터 차례대로 검사한다
+    for (let i = 0; i <= str.length / 2; i += 1) {
+        let prefix = str.slice(0, i);
+        let suffix = str.slice(str.length - i);
+    
+        if (prefix === suffix) {
+            resultStr = prefix;
+        }
+    };  
+    // LPS가 없는 경우
+    return resultStr.length;
+};
+
+
+
 let output = LPS('abbbcc');
 console.log(output); // --> 0
 
