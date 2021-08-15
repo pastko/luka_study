@@ -764,11 +764,96 @@ const quickSort = function (arr) {
 };
 
   
-let output = quickSort([3, 1, 21]);
-console.log(output); // --> [1, 3, 21]
-output = quickSort([ 20, -10, -11, 2, 29 ]);
-console.log(output); // --> [1, 3, 21]
+// let output = quickSort([3, 1, 21]);
+// console.log(output); // --> [1, 3, 21]
+// output = quickSort([ 20, -10, -11, 2, 29 ]);
+// console.log(output); // --> [1, 3, 21]
 
+
+// toy 18 
+const getItemFromTwoSortedArrays = function (arr1, arr2, k) {
+    // TODO: 여기에 코드를 작성합니다.
+    return sort([...arr1,...arr2])[k-1];
+};
+  
+  
+let sort = function (arr,flag) {
+// TODO: 여기에 코드를 작성합니다.
+    if (arr.length < 2) {
+        return arr;
+    }
+    const pivot = [arr[0]];
+    const left = [];
+    const right = [];
+
+    for (let i = 1; i < arr.length; ++i) {
+        if(!flag){
+        if (arr[i] <= pivot) left.push(arr[i]);
+        else right.push(arr[i]);
+        }else{
+        if(flag(arr[i]) <= pivot) left.push(arr[i]);
+        else right.push(arr[i]);
+        }
+    }
+    //return arr;
+    return [ ...sort(left,flag), ...pivot ,...sort(right,flag)];
+};
+  
+
+// let arr1 = [1, 4, 8, 10];
+// let arr2 = [2, 3, 5, 9];
+// let result = getItemFromTwoSortedArrays(arr1, arr2, 6);
+// console.log(result); // --> 8
+
+// arr1 = [1, 1, 2, 10];
+// arr2 = [3, 3];
+// result = getItemFromTwoSortedArrays(arr1, arr2, 4);
+// console.log(result); // --> 3
+
+
+
+// toy 19
+
+const LPS = function (str) {
+    if (str.length < 2) return 0;
+  
+    // 문자열을 두 부분으로 나누고
+    // 부분 문자열을 쉽게 구하기 위해
+    // 왼쪽 부분의 마지막 인덱스와 오른쪽 부분의 첫 인덱스를 저장
+  
+    let halfSize = Math.floor(str.length / 2);
+    // 문자열의 길이가 홀수일 수 있으므로, 올림한다.
+    let rightStart = Math.ceil(str.length / 2);
+  
+    // 가장 긴 LPS 후보부터 차례대로 검사한다
+    for (let offset = 0; offset < halfSize; offset++) {
+        let matched = true;
+        for (let i = 0; i < halfSize - offset; i++) {
+            if (str[i] !== str[rightStart + offset + i]) {
+                matched = false;
+                break;
+            }
+        }
+        if (matched) return halfSize - offset;
+    }
+    // LPS가 없는 경우
+    return 0;
+};
+
+let output = LPS('abbbcc');
+console.log(output); // --> 0
+
+output = LPS('aaaa');
+console.log(output); // --> 2
+// prefix: str.slice(0, 2)
+// suffix: str.slice(2)
+// non-overlapping 조건이 없는 경우 정답은 4 입니다.
+
+output = LPS('aaaaa');
+console.log(output); // --> 2
+// prefix: str.slice(0, 2)
+// suffix: str.slice(3)
+// non-overlapping 조건이 없는 경우 정답은 5 입니다.
 
 function unpackGiftbox(giftBox, wish) {
     // TODO: 여기에 코드를 작성합니다.
