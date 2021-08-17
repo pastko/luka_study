@@ -840,7 +840,7 @@ const LPS = function (str) {
     return 0;
 };
 
-const LPS = function (str) {
+const LPSs = function (str) {
     if (str.length < 2) return 0;
     let resultStr = '';
 
@@ -859,20 +859,46 @@ const LPS = function (str) {
 
 
 
-let output = LPS('abbbcc');
-console.log(output); // --> 0
+// let output = LPS('abbbcc');
+// console.log(output); // --> 0
 
-output = LPS('aaaa');
-console.log(output); // --> 2
-// prefix: str.slice(0, 2)
-// suffix: str.slice(2)
-// non-overlapping 조건이 없는 경우 정답은 4 입니다.
+// output = LPS('aaaa');
+// console.log(output); // --> 2
+// // prefix: str.slice(0, 2)
+// // suffix: str.slice(2)
+// // non-overlapping 조건이 없는 경우 정답은 4 입니다.
 
-output = LPS('aaaaa');
-console.log(output); // --> 2
-// prefix: str.slice(0, 2)
-// suffix: str.slice(3)
-// non-overlapping 조건이 없는 경우 정답은 5 입니다.
+// output = LPS('aaaaa');
+// console.log(output); // --> 2
+// // prefix: str.slice(0, 2)
+// // suffix: str.slice(3)
+// // non-overlapping 조건이 없는 경우 정답은 5 입니다.
+
+
+
+// toy 20
+const mergeSort = function (arr) {
+    // TODO: 여기에 코드를 작성합니다.
+    if(arr.length <= 1 ) return arr;
+  
+    
+    let merge = (left, right) =>{
+        console.log(left +":" + right);
+        let result = [];
+        while (left.length !== 0 && right.length !== 0) {
+		    left[0] <= right[0] ? result.push(left.shift()) : result.push(right.shift());	
+	    }
+        return [...result, ...left, ...right];
+    }
+    let centerPoint = Math.floor(arr.length / 2)
+    return merge(mergeSort(arr.slice(0,centerPoint)), mergeSort(arr.slice(centerPoint)));
+};
+  
+
+let output = mergeSort([3, 1, 21]);
+console.log(output); // --> [1, 3, 21]
+output = mergeSort([ 5, 4, 3, 2, 1 ])
+console.log(output); // --> [1, 3, 21]
 
 function unpackGiftbox(giftBox, wish) {
     // TODO: 여기에 코드를 작성합니다.
