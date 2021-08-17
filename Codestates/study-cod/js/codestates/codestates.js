@@ -771,10 +771,10 @@ const quickSort = function (arr) {
 
 
 // toy 18 
-const getItemFromTwoSortedArrays = function (arr1, arr2, k) {
-    // TODO: 여기에 코드를 작성합니다.
-    return sort([...arr1,...arr2])[k-1];
-};
+// const getItemFromTwoSortedArrays = function (arr1, arr2, k) {
+//     // TODO: 여기에 코드를 작성합니다.
+//     return sort([...arr1,...arr2])[k-1];
+// };
   
   
 let sort = function (arr,flag) {
@@ -799,16 +799,49 @@ let sort = function (arr,flag) {
     return [ ...sort(left,flag), ...pivot ,...sort(right,flag)];
 };
   
+// const getItemFromTwoSortedArrays = function (arr1, arr2, k) {
+//     // TODO: 여기에 코드를 작성합니다.
+//     let resul = sortArray([...arr1,...arr2]); 
+//     console.log(resul)
+//     return resul[k-1];
+// };
+  
+const sortArray = function (arr) {
+    // TODO: 여기에 코드를 작성합니다.
+    if (arr.length < 2) {
+        return arr;
+    }
+    const pivot = [arr[0]];
+    const left = [];
+    const right = [];
+    
+    for (let i = 1; i < arr.length; ++i) {
+        if (arr[i] <= pivot) left.push(arr[i]);
+        else right.push(arr[i]);     
+    }
+    //return arr;
+    return [ ...sortArray(left), ...pivot ,...sortArray(right)];
+};
 
-// let arr1 = [1, 4, 8, 10];
-// let arr2 = [2, 3, 5, 9];
-// let result = getItemFromTwoSortedArrays(arr1, arr2, 6);
-// console.log(result); // --> 8
+const getItemFromTwoSortedArrays = function (arr1, arr2, k) {
+    // TODO: 여기에 코드를 작성합니다.
+    let arrsize1 = arr1.length,
+        arrsize2 = arr2.length;
 
-// arr1 = [1, 1, 2, 10];
-// arr2 = [3, 3];
-// result = getItemFromTwoSortedArrays(arr1, arr2, 4);
-// console.log(result); // --> 3
+
+
+    return arr;
+};
+
+let arr1 = [1, 4, 8, 10];
+let arr2 = [2, 3, 5, 9];
+let result = getItemFromTwoSortedArrays(arr1, arr2, 6);
+console.log(result); // --> 8
+
+arr1 = [1, 1, 2, 10];
+arr2 = [3, 3];
+result = getItemFromTwoSortedArrays(arr1, arr2, 4);
+console.log(result); // --> 3
 
 
 
@@ -894,14 +927,10 @@ let merge = (left, right) =>{
     return [...result, ...left, ...right];
 }
 
-
-// con
-  
-
-let output = mergeSort([3, 1, 21]);
-console.log(output); // --> [1, 3, 21]
-output = mergeSort([ 5, 4, 3, 2, 1 ])
-console.log(output); // --> [1, 3, 21]
+// let output = mergeSort([3, 1, 21]);
+// console.log(output); // --> [1, 3, 21]
+// output = mergeSort([ 5, 4, 3, 2, 1 ])
+// console.log(output); // --> [1, 3, 21]
 
 function unpackGiftbox(giftBox, wish) {
     // TODO: 여기에 코드를 작성합니다.
