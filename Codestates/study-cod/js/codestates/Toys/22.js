@@ -1,28 +1,27 @@
 // toy 22
 const rotateMatrix = function (matrix,k) {
     if(matrix.length === 0)
-      return []
-    // TODO: 여기에 코드를 작성합니다.
+        return []
     if(k === undefined){
-      return rotate(matrix);
+        return rotate(matrix);
     }
     else{
-      for(let i = 0 ; i < k % 4 ; ++i){
-        matrix = rotate(matrix);
-      }
-      return matrix;
+        for(let i = 0 ; i < k % 4 ; ++i){
+            matrix = rotate(matrix);
+        }
+        return matrix;
     }
     return [];
-  };
-  
-  let rotate = (matrix) =>{
+};
+
+let rotate = (matrix) =>{
     let result = [];
     for(let i = 0 ; i < matrix[0].length ;++i){
-      let row = []
-      for(let j = matrix.length - 1; j >= 0 ; --j){
-        row.push(matrix[j][i]);
-      }
-      result.push(row);
+        let row = []
+        for(let j = matrix.length - 1; j >= 0 ; --j){
+            row.push(matrix[j][i]);
+        }
+        result.push(row);
     }
     return result;
 };
