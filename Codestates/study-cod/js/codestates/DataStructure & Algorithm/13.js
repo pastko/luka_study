@@ -41,7 +41,7 @@ function connectedVertices1(edges) {
 
 
 function connectedVertices(edges) {
-    // TODO: DFS / BFS
+    // TODO: DFS / BFS 소스 수정 필요 
     let maxNum = Math.max(...edges.flat()); 
     let matrix = [];
 

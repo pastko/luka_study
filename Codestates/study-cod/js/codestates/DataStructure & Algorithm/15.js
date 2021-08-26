@@ -2,7 +2,7 @@
 // HACK: 15_[Greedy] 짐 나르기
 
 function movingStuff(stuff, limit) {
-    // TODO: greedy
+    // HACK: greedy
     let count = 0;
 
     stuff = stuff.reverse();

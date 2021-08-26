@@ -25,7 +25,6 @@
 
 
 function barcode(len) {
-    // TODO: 
     
 
     /**
