@@ -1,13 +1,14 @@
 // toy 25
-<<<<<<< Updated upstream
-// HACK : 길찾기 알고리즘 [ BFS / DFS / 다익스트라]
+// HACK : 길찾기 알고리즘  [ DFS / BFS / 다익스트라 알고리즘 / A*(Astar) 알고리즘] 
+// 
+
+
 /** 
  * TODO : BFS/ DFS 확인
  * 
  * 
  * 
  */
-
 
 
 const robotPath = function (room, src, dst) {
@@ -52,15 +53,6 @@ class AQueue {
         return this.size;
     }
 }
-=======
-// HACK : 길찾기 알고리즘  [ DFS / BFS / 다익스트라 알고리즘 / A*(Astar) 알고리즘] 
-// 
-
-const robotPath = function (room, src, dst) {
-    // TODO: 여기에 코드를 작성합니다.
-    return room
-};
-
 
 
 let room = [
@@ -74,4 +66,3 @@ let src = [4, 2];
 let dst = [2, 2];
 let output = robotPath(room, src, dst);
 console.log(output); // --> 8
->>>>>>> Stashed changes
