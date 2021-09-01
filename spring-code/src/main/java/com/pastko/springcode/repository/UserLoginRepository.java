@@ -37,10 +37,10 @@ public class UserLoginRepository implements LoginRepository{
     public Long DeleteLoginList(String username) {
         if(LoginUserList.containsValue(username))
         {
-            return ;
+            return null;
         }
         else {
-            return ;
+            return null;
         }
     }
 
