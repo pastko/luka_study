@@ -23,7 +23,7 @@ public class JpaLoginRepositoryImpl implements LoginRepository {
         this.em.persist(member);
         this.em.close();
 
-        return member.getUserId();
+        return null;
     }
 
     @Override

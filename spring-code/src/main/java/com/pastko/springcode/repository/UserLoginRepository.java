@@ -10,12 +10,7 @@ public class UserLoginRepository implements LoginRepository{
 
     @Override
     public Long save(LoginDTO userinfo) {
-        LoginDTO loginMember = new LoginDTO();
-        loginMember.setUserId(++memberId);
-        loginMember.setUserName(userinfo.getUserName());
-        loginMember.setUserPass((userinfo.getUserPass()));
-        LoginUserList.put(loginMember.getUserId(),loginMember);
-        return loginMember.getUserId();
+      return null;
     }
 
     @Override
@@ -25,7 +20,7 @@ public class UserLoginRepository implements LoginRepository{
 
     @Override
     public Optional<LoginDTO> findByName(String username) {
-        return LoginUserList.values().stream().filter(e->e.getUserName().equals(username)).findAny();
+        return null;
     }
 
     @Override

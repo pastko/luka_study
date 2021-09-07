@@ -17,10 +17,13 @@ import java.sql.Timestamp;
 public class LoginDTO {
     @Id
     private Long userId;
+
     @Column(unique = true)
     private String userName;
+
     @Column(nullable = false)
     private String userPass;
+
     @Temporal(TemporalType.DATE)
     private Date timestamp;
 }

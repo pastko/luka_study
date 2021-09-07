@@ -15,18 +15,16 @@ public class UserList {
     private Long id;
 
     @Column(unique = true)
-    private String name;
+    private String userName;
 
     @Column(nullable = false)
-    private String password;
+    private String userPass;
 
     @Column(length = 300)
     private String info;
 
-    @Column(de)
-    private Date createtime;
-
-    public UserList() {}
+    @Temporal(TemporalType.DATE)
+    private Date timeStamp;
 
 
 }
