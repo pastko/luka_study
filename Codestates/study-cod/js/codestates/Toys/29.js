@@ -1,5 +1,5 @@
 // toy 29_binaryHeap
-// HACK : min/max binary heap
+// HACK : max binary heap
 
 
 // 아래 코드는 수정하지 마세요.
