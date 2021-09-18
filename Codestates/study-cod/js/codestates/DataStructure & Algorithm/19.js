@@ -1,13 +1,14 @@
 // DataStructure & Algorithm 
 // HACK: 19_[GCD] 빼빼로 데이
 function divideChocolateStick(M, N) {
-    // TODO: 
-    
+  
     // let res = diviser(GCD(M,N));
     let gcd = GCD(M,N);
     let result = [];
     // return res.map(e=>[ e , M/e, N/e ])
 
+
+    // 한번 반복할때 2의 경우 생성 : 전체 개수의 반만 반복 
     for (let left = 1; left <= Math.floor(Math.sqrt(gcd)); left++) {
         if (gcd % left === 0) {
             result.push([left, M / left, N / left]);
