@@ -1,5 +1,6 @@
 
-// toy 4번 문제 
+// toy 04_bubbleSort
+// HACK: 정렬 ( 버블 정렬 )
 const bubbleSort = function (arr) {
     // TODO: 여기에 코드를 작성합니다.
     let switchingFlag = false

@@ -1,4 +1,6 @@
-/// 01 번
+/// toy 01_orderOfPresentation
+// HACK: 정렬
+
 
 function getcombine(arr, select)
 {

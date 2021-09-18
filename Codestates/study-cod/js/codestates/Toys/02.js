@@ -1,4 +1,6 @@
-// toy 2
+// toy 02_fibonacci
+// HACK : 재귀, DP 
+
 function fibonacci(num) {
     
     if(num ===  0) return 0

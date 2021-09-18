@@ -1,6 +1,8 @@
-// toy 10
+// toy 10_binarySearch
+// HACK : 이진탐색 알고리즘
+
 const binarySearch1 = function (arr, target) {
-    // TODO : 여기에 코드를 작성합니다.
+    
     if (arr.length === 0)
         return -1;
 

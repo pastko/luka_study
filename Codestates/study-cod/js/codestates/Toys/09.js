@@ -1,4 +1,5 @@
-// toy 9 
+// toy 09_power
+// HACK : dp
 
 function power2(base, exponent) {
     // todo: 여기에 코드를 작성합니다.
@@ -11,7 +12,7 @@ function power2(base, exponent) {
     return result  % 94906249
 }
 function power(base, exponent) {
-    // TODO: 여기에 코드를 작성합니다.
+   
 
     let results = [3];  
     let pow = function(n,count) {
@@ -38,11 +39,20 @@ function power1(base, exponent) {
     if (exponent % 2 === 1) return (base * result) % 94906249;
     else return result;
 }
+function power(base, exponent) {
+  
 
+  if (exponent === 0) return 1;
+
+  const half = parseInt(exponent / 2);
+  const temp = power(base, half);
+  const result = (temp * temp) % 94906249;
+
+  if (exponent % 2 === 1) return (base * result) % 94906249;
+  else return result;
+}
 
 
 let output = power(3, 40);
 console.log(output); // --> 19334827
 
-
-// TODO : add advanced coding 

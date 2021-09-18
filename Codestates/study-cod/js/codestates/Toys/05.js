@@ -1,4 +1,5 @@
 // toy 5번 문제 
+// HACK: dynamic with tabulation
 
 let tiling = function (n) {
     // TODO: 여기에 코드를 작성합니다.
@@ -22,6 +23,9 @@ let output = tiling(2);
 console.log(output); // --> 2
 
 output = tiling(4);
+console.log(output); // --> 5
+
+output = tiling(10);
 console.log(output); // --> 5
 /* 
 2 x 4 보드에 타일을 놓는 방법은 5가지

@@ -1,4 +1,6 @@
-//toy 7
+//toy 07_treeDFS
+// HACK : DFS
+
 let dfs = function (node) {
     // TODO: 여기에 코드를 작성합니다.
     let result = [];

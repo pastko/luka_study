@@ -1,5 +1,6 @@
 
-// toy 6번
+// toy 06_sudoku
+// HACK : sudoku
 const sudoku = function (board) {
     // TODO: 여기에 코드를 작성합니다.
     let emptyNumberArray = [1,2,3,4,5,6,7,8,9];

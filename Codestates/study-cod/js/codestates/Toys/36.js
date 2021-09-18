@@ -1,6 +1,6 @@
 
 // toy 36_closestPairOfPoints
-// HACK: 
+// HACK: merge sort , divide and conquer
 
 // 좌표평면 위의 두 점 사이의 거리를 계산하는 함수입니다.
 function calculateDistance(p1, p2) {
@@ -11,6 +11,9 @@ function calculateDistance(p1, p2) {
 
 const closestPairOfPoints = function (points) {
     // TODO: 여기에 코드를 작성합니다.
+
+
+
 };
 
 
