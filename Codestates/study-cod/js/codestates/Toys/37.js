@@ -2,7 +2,7 @@
 // HACK : dp 잔돈 계산 
 
 const coinChange = function (total, coins) {
-    // TODO: 여기에 코드를 작성합니다.
+    
     let result = 0;
     let dp = Array(total + 1).fill(0);
     dp[0] = 1;

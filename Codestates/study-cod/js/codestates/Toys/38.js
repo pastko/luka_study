@@ -12,6 +12,12 @@ const decompression = function (image) {
 
 
 
+// HACK:
+const decompression = function (image) {
+    // TODO: 여기에 코드를 작성합니다.
+};
+
+
 let image = [
     [1, 0, 1, 1],
     [0, 1, 1, 1],
