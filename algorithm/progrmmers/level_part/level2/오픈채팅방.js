@@ -14,8 +14,10 @@ function solution(record) {
     });
     console.log(userId)
     splitRecord
-            .filter(e=>e[0]==='Change')
-            .forEach(changeE => userId[changeE[1]]=changeE[2]);
+            .forEach(changeE => {
+                if(changeE[0] !== 'Leave')
+                    userId[changeE[1]]=changeE[2]
+            });
     console.log(userId)
 
     return splitRecord
